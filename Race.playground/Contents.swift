@@ -69,15 +69,15 @@ class Tracker: HorseRaceDelegate {
 class RaceBroadcaster: HorseRaceDelegate{
     
     func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse) {
-        
+        //not yet implemented
     }
     
     func race(_ race: Race, didStartAt time: Date) {
-        
+        // not yet implemented
     }
     
     func addLapLeader(_ horse: Horse, forLap lap: Int, atTime time: Date) {
-        
+        //not yet implemented
     }
     
 }
@@ -157,6 +157,7 @@ let participants = [jubilee, sonora, jasper]
 
 let race = Race(laps: 1, participants: participants)
 let tracker = Tracker()
-race.delegate = tracker
+let broadcaster = RaceBroadcaster()
+race.delegate = broadcaster
 
 race.start()
