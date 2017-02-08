@@ -13,7 +13,7 @@ protocol HorseRaceDelegate: class{
     func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse)
     
 }
-class Tracker {
+class Tracker: HorseRaceDelegate {
     
     struct Keys {
         static let raceStartTime = "raceStartTime"
@@ -22,24 +22,29 @@ class Tracker {
         static let winner = "winner"
     }
     
+    
+    
     var stats = [String: Any]()
     
-    func updateRaceStart(with time: Date) {
+    
+    func race(_ race: Race, didStartAt time: Date) {
         stats.updateValue(time, forKey: Keys.raceStartTime)
+
     }
     
-    func updateLapLeaderWith(lapNumber number: Int, horse: Horse, time: Date) {
+    
+    func addLapLeader(_ horse: Horse, forLap lap: Int, atTime time: Date) {
         let lapLead = "Horse: \(horse.name), time: \(time)"
-        let lapLeadKey = "\(Keys.lapLeader) \(number)"
+        let lapLeadKey = "\(Keys.lapLeader) \(lap)"
         
         stats.updateValue(lapLead, forKey: lapLeadKey)
     }
     
-    func updateRaceEndWith(winner: Horse, time: Date) {
+    
+    func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse) {
         stats.updateValue(winner.name, forKey: Keys.winner)
         stats.updateValue(time, forKey: Keys.raceEndTime)
     }
-    
     func printRaceSummary() {
         print("***********")
         
