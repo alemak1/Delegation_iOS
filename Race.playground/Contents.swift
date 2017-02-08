@@ -100,6 +100,7 @@ class Race {
     
     func start() {
         RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
+        delegate?.race(self, didStartAt: Date())
         print("Race in progress...")
     }
     
@@ -108,6 +109,7 @@ class Race {
         for horse in participants {
             horse.distanceTraveled += horse.currentSpeed
             
+            delegate?.addLapLeader(horse, forLap: horse.currentLap, atTime: Date())
             if horse.distanceTraveled >= lapLength {
                 horse.distanceTraveled = 0
                 
@@ -116,6 +118,7 @@ class Race {
                 horse.currentLap += 1
                 
                 if horse.currentLap >= laps + 1 {
+                    delegate?.race(self, didEndAt: Date(), withWinner: horse)
                     stop()
                     break
                 }
