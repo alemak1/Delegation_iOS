@@ -1,11 +1,10 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-
-var str = "Hello, playground"
-
 import Foundation
 import PlaygroundSupport
+
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 class Tracker {
     
@@ -54,7 +53,10 @@ class Tracker {
     }
 }
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+class RaceBroadcaster{
+    
+    
+}
 
 class Horse {
     let name: String
@@ -79,7 +81,7 @@ class Race {
     let participants: [Horse]
     
     let tracker = Tracker()
-    
+    let broadcaster = RaceBroadcaster()
     
     lazy var timer: Timer = Timer(timeInterval: 1, repeats: true) { timer in
         self.updateProgress()
@@ -134,4 +136,4 @@ let jasper = Horse(name: "Jasper", maxSpeed: 17)
 let participants = [jubilee, sonora, jasper]
 
 let race = Race(laps: 1, participants: participants)
-race.start()
+//race.start()
