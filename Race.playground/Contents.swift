@@ -6,6 +6,13 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
+protocol HorseRaceDelegate{
+    
+    func race(_ race: Race, didStartAt time: Date)
+    func addLapLeader(_ horse: Horse, forLap lap: Int, atTime time: Date)
+    func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse)
+    
+}
 class Tracker {
     
     struct Keys {
