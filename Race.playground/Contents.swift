@@ -66,8 +66,19 @@ class Tracker: HorseRaceDelegate {
     }
 }
 
-class RaceBroadcaster{
+class RaceBroadcaster: HorseRaceDelegate{
     
+    func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse) {
+        
+    }
+    
+    func race(_ race: Race, didStartAt time: Date) {
+        
+    }
+    
+    func addLapLeader(_ horse: Horse, forLap lap: Int, atTime time: Date) {
+        
+    }
     
 }
 
