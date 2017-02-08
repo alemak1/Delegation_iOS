@@ -87,7 +87,8 @@ class Race {
     let lapLength: Double = 300
     let participants: [Horse]
     
-  
+    var delegate: HorseRaceDelegate
+    
     lazy var timer: Timer = Timer(timeInterval: 1, repeats: true) { timer in
         self.updateProgress()
     }
