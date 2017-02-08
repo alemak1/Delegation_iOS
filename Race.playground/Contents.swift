@@ -44,6 +44,7 @@ class Tracker: HorseRaceDelegate {
     func race(_ race: Race, didEndAt time: Date, withWinner winner: Horse) {
         stats.updateValue(winner.name, forKey: Keys.winner)
         stats.updateValue(time, forKey: Keys.raceEndTime)
+        printRaceSummary()
     }
     func printRaceSummary() {
         print("***********")
@@ -147,4 +148,4 @@ let race = Race(laps: 1, participants: participants)
 let tracker = Tracker()
 race.delegate = tracker
 
-//race.start()
+race.start()
