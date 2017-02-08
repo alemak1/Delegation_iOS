@@ -6,7 +6,7 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-protocol HorseRaceDelegate{
+protocol HorseRaceDelegate: class{
     
     func race(_ race: Race, didStartAt time: Date)
     func addLapLeader(_ horse: Horse, forLap lap: Int, atTime time: Date)
@@ -87,7 +87,7 @@ class Race {
     let lapLength: Double = 300
     let participants: [Horse]
     
-    var delegate: HorseRaceDelegate
+    weak var delegate: HorseRaceDelegate?
     
     lazy var timer: Timer = Timer(timeInterval: 1, repeats: true) { timer in
         self.updateProgress()
